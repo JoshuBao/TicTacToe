@@ -11,6 +11,8 @@ class GameState: ObservableObject
     @Published var crossesScore = 0
     @Published var showAlert = false
     @Published var alertMessage = "Draw"
+    
+
 
     
     init()
@@ -49,12 +51,13 @@ class GameState: ObservableObject
         else
         {
             turn = turn == Tile.cross ? Tile.nought : Tile.cross
+            if (checkForDraw())
+            {
+                alertMessage = "Draw!"
+                showAlert = true
+            }
         }
-        if (checkForDraw())
-        {
-            alertMessage = "Draw!"
-            showAlert = true
-        }
+      
     }
    
     
@@ -91,15 +94,15 @@ class GameState: ObservableObject
         }
         
         //horizontal victories
-        if (isTurnTile(0, 1) && isTurnTile(0, 2) && isTurnTile(0, 3))
+        if (isTurnTile(0, 0) && isTurnTile(0, 1) && isTurnTile(0, 2))
         {
             return true;
         }
-        if (isTurnTile(1, 1) && isTurnTile(1, 2) && isTurnTile(1, 3))
+        if (isTurnTile(1, 0) && isTurnTile(1, 1) && isTurnTile(1, 2))
         {
             return true;
         }
-        if (isTurnTile(2, 1) && isTurnTile(2, 2) && isTurnTile(2, 3))
+        if (isTurnTile(2, 0) && isTurnTile(2, 1) && isTurnTile(2, 2))
         {
             return true;
         }

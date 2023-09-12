@@ -17,7 +17,7 @@ struct ContentView: View {
             .font(.title)
             .bold()
             .padding()
-        
+            
         VStack (spacing: borderSize){
             ForEach(0...2, id:\.self)
             {
@@ -65,6 +65,7 @@ struct ContentView: View {
             .font(.title)
             .bold()
             .padding()
+        
         Spacer()
     }
 }
